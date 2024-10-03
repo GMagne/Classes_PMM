@@ -104,10 +104,12 @@ demoCondicions() {
 demoLlista() {
   //https://api.dart.dev/stable/3.5.3/dart-core/List-class.html
   // En dart List, Map i Set són genèrics, poden obtenir objectes de qualsevol tipus inclòs dynamic
-  
+
   List<dynamic> stuff = [2, true, 'uep', [], null];
   // stuff2 tindrà tipus List<dynamic>
   var stuff2 = [2, false, null];
+
+  var parells = <int>[2, 4, 6, 8];
 
   print(parells);
   print(stuff);
