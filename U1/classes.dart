@@ -80,8 +80,8 @@ void main() {
   // Aquest cop, quan cream una persona amb els paràmetres nombrats, ens demana
   // els paràmetres per nom, però li podem posar l'ordre que volguem
   // i fixau-vos que edat és opcional
-  PersonaAmbEdat persona3 =
-      new PersonaAmbEdat.parametresNormbrats(nom: 'asc', cognoms: 'cognoms');
+  PersonaAmbEdat persona3 = new PersonaAmbEdat.parametresNormbrats(
+      nom: 'asc', cognoms: 'cognoms', edat: null);
   PersonaAmbEdat persona4 = new PersonaAmbEdat.parametresNormbrats(
       nom: 'Jane', cognoms: 'Doe', edat: 10);
 }
