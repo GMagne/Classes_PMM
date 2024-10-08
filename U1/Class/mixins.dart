@@ -9,15 +9,15 @@ abstract class Au extends Animal {}
 abstract class Peix extends Animal {}
 
 // Caracteríostiques ja implementades que afegirem a classes
-abstract class Volar {
+abstract mixin class Volar {
   void volar() => print('Estic volant');
 }
 
-abstract class Nadar {
+abstract mixin class Nadar {
   void nadar() => print('Estic nedant');
 }
 
-abstract class Caminar {
+abstract mixin class Caminar {
   void caminar() => print('Estic caminant');
 }
 
@@ -45,4 +45,3 @@ void main() {
   batman.volar();
   // En canvi si cridam nadar donaria error
 }
-
