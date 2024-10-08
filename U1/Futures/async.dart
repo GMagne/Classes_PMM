@@ -33,5 +33,5 @@ void main() async {
   getIDAsync('6').then(print);
   // I si volem que una funció s'executi en segons pla
   // però que acabi abans de fí de programa?
-  print('Fí del programa');
+  print('Fi del programa');
 }
