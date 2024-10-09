@@ -17,20 +17,27 @@ Future<String> getIDAsync(String id) async {
   return 'ID de Jaume: $id';
 }
 
+Future<String> getIDAsync2(String id) async {
+  // Map<String,dynamic>
+  return Future.delayed(new Duration(milliseconds: 300), () {
+    return 'ID de Jaume: $id';
+  });
+}
+
 //void main() async{ Els mètodes superiors també han de ser asincrons
 void main() async {
   print('Inici del programa');
   print(getID('1'));
 
-  print(getIDAsync('2')); //await
+  print(await getIDAsync('2')); //await
 
-  getIDAsync('3').then((data) => print(data)); //then
+  await getIDAsync2('3').then((str) => print(str)); //then
 
-  getIDAsync('4').then(print);
+  await getIDAsync2('4').then(print);
 
   final nom = await getIDAsync('5'); //await
   print(nom);
-  getIDAsync('6').then(print);
+  await getIDAsync('6').then(print);
   // I si volem que una funció s'executi en segons pla
   // però que acabi abans de fí de programa?
   print('Fi del programa');
