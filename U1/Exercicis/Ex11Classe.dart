@@ -25,12 +25,12 @@ void main(List<String> arguments) {
     }
   }
 
-  //print(a.lastIndexOf(true) * 2 + 1);
+  print(a.lastIndexOf(true) * 2 + 1);
 
-  List<int> primers = (n > 2) ? [2] : [];
+  /*List<int> primers = (n > 2) ? [2] : [];
   for (var i = 1; i < a.length; i++) {
     if (a[i]) primers.add(2 * i + 1);
   }
 
-  print(primers);
+  print(primers);*/
 }
