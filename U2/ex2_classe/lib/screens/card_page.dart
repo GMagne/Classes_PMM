@@ -21,12 +21,38 @@ class CardPage extends StatelessWidget {
               height: 30.0,
             ),
             _card2(),
+            SizedBox(
+              height: 30.0,
+            ),
+            _card1(),
+            SizedBox(
+              height: 30.0,
+            ),
+            _card2(),
+            SizedBox(
+              height: 30.0,
+            ),
+            _card1(),
+            SizedBox(
+              height: 30.0,
+            ),
+            _card2(),
+            SizedBox(
+              height: 30.0,
+            ),
+            _card1(),
+            SizedBox(
+              height: 30.0,
+            ),
+            _card2(),
           ],
         ));
   }
 
   Widget _card1() {
     return Card(
+      elevation: 10,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
       child: Column(
         children: [
           ListTile(
@@ -48,18 +74,43 @@ class CardPage extends StatelessWidget {
   }
 
   Widget _card2() {
-    return Card(
-        child: Column(
-      children: [
-        FadeInImage(
-          placeholder: AssetImage('assets/jar-loading.gif'),
-          image: NetworkImage(url),
-        ),
-        Container(
-          child: Text('Foto URL'),
-          padding: EdgeInsets.all(10),
-        ),
-      ],
-    ));
+    final targeta = Container(
+      //shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+      //clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: Column(
+        children: [
+          FadeInImage(
+            fadeInDuration: Duration(milliseconds: 2000),
+            height: 400,
+            fit: BoxFit.cover,
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            image: NetworkImage(url),
+          ),
+          Container(
+            child: Text('Foto URL'),
+            padding: EdgeInsets.all(10),
+          ),
+        ],
+      ),
+    );
+
+    return Container(
+      child: ClipRRect(
+        child: targeta,
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30.0),
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+            color: Colors.black26,
+            blurRadius: 10.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0, 10.10),
+          )
+        ],
+      ),
+    );
   }
 }

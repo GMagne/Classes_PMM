@@ -1,4 +1,4 @@
-import 'package:ex2_classe/menu_providers.dart';
+import 'package:ex2_classe/providers/menu_providers.dart';
 import 'package:ex2_classe/utils/icon_string_utils.dart';
 import 'package:flutter/material.dart';
 

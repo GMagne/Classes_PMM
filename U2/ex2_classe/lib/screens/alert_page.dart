@@ -1,12 +1,13 @@
+import 'package:ex2_classe/utils/myappbar.dart';
 import 'package:flutter/material.dart';
 
 class AlertPage extends StatelessWidget {
+  const AlertPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pàgina Alerta'),
-      ),
+      appBar: myAppBar('Pàgina Alerta'),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.pop(context);

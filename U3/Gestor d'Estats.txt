@@ -1,0 +1,45 @@
+Què és la gestió d'estats?
+
+-> Què és un estat?
+L'estat descriu la situació actual de l'aplicació o dels seus components.
+Per exemple, el simple fet que l'usuari faci clic a un checkbox,
+canvia la situació actual de l'aplicació, per tant canvia el seu estat.
+
+Un altre exemple podria ser quan fem una petició a una API en el back.
+Mentre estem carregant la informació mostrem un indicador circular i,
+quan la informació està llesta, mostrem les dades rebudes
+en pantalla de manera que tindríem l'estat loading (carregant)
+i l'estat loaded (carregat).
+
+Estats efímers
+L'estat efímer (a vegades anomenat estat de UI o estat local) és l'estat que
+pot contenir perfectament un sol widget. Per exemple:
+ - Pestanya seleccionada actual en un BottomNavigationBar
+ - CheckBox Seleccionat
+ - Un Botó accionat (exemple el helloworld que farem amb flutter)
+Amb això en ment, hem de pensar que l'estat efímer no necessita accedir
+els altres widgets en l'arbre.
+
+Estat d'aplicació
+Aquest estat no és efímer, és necessari compartir-lo al llarg de l'aplicació i
+en ocasions es desitja mantenir-lo entre sessions d'usuari (a vegades també anomenat
+estat compartit).
+
+Exemples d'estat d'aplicació:
+ - Preferències de l'usuari
+ - Estat d'autenticació
+ - El carret de la compra en una aplicació de comerç electrònic
+
+Però com feim compartir la informació? Providers
+
+Imaginem que desitgem compartir informació a través de l'arbre de widgets i que
+cada vegada que viatgem d'una pantalla a una altra, haguéssim de compartir entre elles
+una entitat amb la dada comuna, què tan coherent et semblaria això? Realment, això
+no resulta molt eficient.
+No obstant això, utilitzar els InheritedWidgets era una mica complex d'implementar i,
+en ocasions, senties que necessitaves eines que facilitessin el consum i la
+actualització de dades. Aquí neix el paquet Provider el qual s'estén del
+InheritedWidget i facilita la gestió d'informació al llarg de l'arbre de widgets.
+En el gràfic adjunt, es veu el comportament del Provider. Sent el pare de tots
+els widgets, pot compartir la informació amb qui la necessiti i alhora el
+consumidor pot actualitzar la informació del seu pare.
