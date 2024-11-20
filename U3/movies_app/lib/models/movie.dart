@@ -9,7 +9,7 @@ class Movie {
   String originalTitle;
   String overview;
   double popularity;
-  String? posterPath;
+  String posterPath;
   DateTime releaseDate;
   String title;
   bool video;
@@ -71,12 +71,11 @@ class Movie {
         "vote_average": voteAverage,
         "vote_count": voteCount,
       };
-
-  get fullPosterPath {
-    if (this.posterPath == null) {
-      return 'https://i.stack.imgur.com/GNhxO.png';
+  get fullPosterImg {
+    if (posterPath == null) {
+      return 'i.stack.imgur.com/GNhxO.png';
     } else {
-      return 'https://image.tmdb.org/t/p/w500$posterPath';
+      return 'image.tmdb.org/t/p/w500/$posterPath';
     }
   }
 }

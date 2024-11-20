@@ -1,42 +1,40 @@
 import 'package:flutter/material.dart';
-import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
-import 'package:movies_app/models/movie.dart';
+import 'dart:convert' as convert;
+
 import 'package:movies_app/models/now_playing_response.dart';
+
+import '../models/movie.dart';
 
 class MoviesProvider extends ChangeNotifier {
   final String _baseUrl = 'api.themoviedb.org';
-  final String _language = 'es-ES';
+  final String _language = 'en-US';
   final String _page = '1';
-  final Map<String, String> headers = {
+  final Map<String, String> _headers = {
     'accept': 'application/json',
     'Authorization':
-        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZGY3MjJiMWU1Zjk3MDMzNDZiNmMwYjNkYTc2MThlMSIsIm5iZiI6MTczMTg4MDU3MC43MjkxNTQsInN1YiI6IjY3M2E1NjBkMjgxYWM5NzJlYTQ0ZDc4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.MYOAioWu79zreC3LClFUEYgiku8vlX6gWzXjX67i2r4'
+        'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMWY1ZWY2YjAxMTRiYzliNDdlMjgwZTFmMmVkMWFhZSIsIm5iZiI6MTczMjEwNTM5MS4wNDE3MzQ3LCJzdWIiOiI2NzNkYzc2MTRlZTcyYjI3MmZlZjY4MDkiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.Pa1HFoDnlIerMESq689BzmQ6jhaj-JpKcnAXTWBj0c8'
   };
 
   List<Movie> onDisplayMovies = [];
 
   MoviesProvider() {
-    print('MoviesProvider constructor');
-    this.getOnDisplayMovies();
+    print('MoviesProvider');
+    getOnDisplayMovies();
   }
 
   void getOnDisplayMovies() async {
-    print('Get on display movies');
-
-    final url = Uri.https(_baseUrl, '/3/movie/now_playing', {
+    var url = Uri.https(_baseUrl, '/3/movie/popular', {
       'language': _language,
       'page': _page,
     });
-    var response = await http.get(url, headers: headers);
 
-    if (response.statusCode == 200) {
-      var jsonResponse =
-          convert.jsonDecode(response.body) as Map<String, dynamic>;
-      var itemCount = jsonResponse['results'];
-      print('Number of books about http: $itemCount.');
-    } else {
-      print('Request failed with status: ${response.statusCode}.');
-    }
+    // Await the http get response, then decode the json-formatted response.
+    print('AAAAAAAAA');
+    var response = await http.get(url, headers: _headers);
+    final nowPlayingResponse = NowPlayingResponse.fromJson(response.body);
+    onDisplayMovies = nowPlayingResponse.results;
+    print('BBBBBBBBBB: ' + onDisplayMovies[0].title);
+    notifyListeners();
   }
 }
